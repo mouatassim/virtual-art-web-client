@@ -1,5 +1,4 @@
 import { useMemo, useRef } from 'react'
-import * as THREE from 'three'
 import { MeshReflectorMaterial } from '@react-three/drei'
 import type { ThreeEvent } from '@react-three/fiber'
 import { makeFloorTextures, makePlasterBump } from '@core/surfaces'
