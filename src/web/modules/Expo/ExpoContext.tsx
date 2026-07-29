@@ -1,11 +1,13 @@
-import { createContext, useContext, useMemo } from 'react'
+import { createContext, useContext, useMemo, useState } from 'react'
 import { buildLayout } from '@core/layout'
 import type { ExpoConfig } from '@core/entities/expo.entity'
+import type { ArtworkConfig } from '@core/entities/artwork.entity'
 import type { Layout } from '@core/layout'
 
 interface ExpoContextValue {
   config: ExpoConfig
   layout: Layout
+  setArtworks: (artworks: ArtworkConfig[]) => void
 }
 
 const ExpoContext = createContext<ExpoContextValue | null>(null)
@@ -16,7 +18,9 @@ export function useExpoContext(): ExpoContextValue {
   return ctx
 }
 
-export function ExpoProvider({ config, children }: { config: ExpoConfig; children: React.ReactNode }) {
+export function ExpoProvider({ config: initial, children }: { config: ExpoConfig; children: React.ReactNode }) {
+  const [artworks, setArtworks] = useState(initial.artworks)
+  const config = useMemo(() => ({ ...initial, artworks }), [initial, artworks])
   const layout = useMemo(() => buildLayout(config), [config])
-  return <ExpoContext.Provider value={{ config, layout }}>{children}</ExpoContext.Provider>
+  return <ExpoContext.Provider value={{ config, layout, setArtworks }}>{children}</ExpoContext.Provider>
 }
