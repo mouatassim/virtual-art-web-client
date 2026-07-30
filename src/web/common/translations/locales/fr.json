@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "manageExpo": "Gérer l'expo",
+    "settings": "Paramètres"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "language": "Langue",
+    "languages": {
+      "en": "Anglais",
+      "fr": "Français",
+      "ar": "Arabe",
+      "es": "Espagnol"
+    }
+  },
+  "manage": {
+    "title": "Gérer l'expo",
+    "artworks": "Œuvres",
+    "addArtwork": "Ajouter une œuvre",
+    "editArtwork": "Modifier l'œuvre",
+    "noArtworks": "Aucune œuvre pour l'instant",
+    "painting": "Peinture",
+    "sculpture": "Sculpture",
+    "fields": {
+      "id": "ID (slug)",
+      "title": "Titre",
+      "artist": "Artiste",
+      "year": "Année",
+      "medium": "Technique",
+      "description": "Description",
+      "dimensions": "Dimensions",
+      "price": "Prix / statut",
+      "type": "Type",
+      "wall": "Mur",
+      "offset": "Décalage (m)",
+      "width": "Largeur (m)",
+      "height": "Hauteur (m)",
+      "image": "Chemin image",
+      "posX": "Position X (m)",
+      "posZ": "Position Z (m)",
+      "shape": "Forme"
+    },
+    "walls": {
+      "north": "Nord",
+      "south": "Sud",
+      "east": "Est",
+      "west": "Ouest",
+      "center-north": "Centre (arrière)",
+      "center-south": "Centre (avant)"
+    },
+    "shapes": {
+      "knot": "Nœud",
+      "monolith": "Monolithe",
+      "spheres": "Sphères"
+    },
+    "actions": {
+      "save": "Enregistrer",
+      "cancel": "Annuler",
+      "delete": "Supprimer",
+      "confirmDelete": "Supprimer cette œuvre ?"
+    }
+  },
+  "intro": {
+    "enter": "Entrer dans l'expo",
+    "tour": "Visite guidée"
+  }
+}

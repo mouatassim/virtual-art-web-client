@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "manageExpo": "إدارة المعرض",
+    "settings": "الإعدادات"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "language": "اللغة",
+    "languages": {
+      "en": "الإنجليزية",
+      "fr": "الفرنسية",
+      "ar": "العربية",
+      "es": "الإسبانية"
+    }
+  },
+  "manage": {
+    "title": "إدارة المعرض",
+    "artworks": "الأعمال الفنية",
+    "addArtwork": "إضافة عمل فني",
+    "editArtwork": "تعديل العمل",
+    "noArtworks": "لا توجد أعمال فنية بعد",
+    "painting": "لوحة",
+    "sculpture": "منحوتة",
+    "fields": {
+      "id": "المعرّف",
+      "title": "العنوان",
+      "artist": "الفنان",
+      "year": "السنة",
+      "medium": "الأسلوب",
+      "description": "الوصف",
+      "dimensions": "الأبعاد",
+      "price": "السعر / الحالة",
+      "type": "النوع",
+      "wall": "الجدار",
+      "offset": "الإزاحة (م)",
+      "width": "العرض (م)",
+      "height": "الارتفاع (م)",
+      "image": "مسار الصورة",
+      "posX": "الموضع X (م)",
+      "posZ": "الموضع Z (م)",
+      "shape": "الشكل"
+    },
+    "walls": {
+      "north": "الشمال",
+      "south": "الجنوب",
+      "east": "الشرق",
+      "west": "الغرب",
+      "center-north": "الوسط (خلف)",
+      "center-south": "الوسط (أمام)"
+    },
+    "shapes": {
+      "knot": "عقدة",
+      "monolith": "أحادي",
+      "spheres": "كرات"
+    },
+    "actions": {
+      "save": "حفظ",
+      "cancel": "إلغاء",
+      "delete": "حذف",
+      "confirmDelete": "حذف هذا العمل الفني؟"
+    }
+  },
+  "intro": {
+    "enter": "دخول المعرض",
+    "tour": "جولة موجهة"
+  }
+}

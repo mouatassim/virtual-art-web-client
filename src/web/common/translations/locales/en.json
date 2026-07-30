@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "manageExpo": "Manage Expo",
+    "settings": "Settings"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "languages": {
+      "en": "English",
+      "fr": "French",
+      "ar": "Arabic",
+      "es": "Spanish"
+    }
+  },
+  "manage": {
+    "title": "Manage Expo",
+    "artworks": "Artworks",
+    "addArtwork": "Add artwork",
+    "editArtwork": "Edit artwork",
+    "noArtworks": "No artworks yet",
+    "painting": "Painting",
+    "sculpture": "Sculpture",
+    "fields": {
+      "id": "ID (slug)",
+      "title": "Title",
+      "artist": "Artist",
+      "year": "Year",
+      "medium": "Medium",
+      "description": "Description",
+      "dimensions": "Dimensions",
+      "price": "Price / status",
+      "type": "Type",
+      "wall": "Wall",
+      "offset": "Offset (m)",
+      "width": "Width (m)",
+      "height": "Height (m)",
+      "image": "Image path",
+      "posX": "Position X (m)",
+      "posZ": "Position Z (m)",
+      "shape": "Shape"
+    },
+    "walls": {
+      "north": "North",
+      "south": "South",
+      "east": "East",
+      "west": "West",
+      "center-north": "Centre (back)",
+      "center-south": "Centre (front)"
+    },
+    "shapes": {
+      "knot": "Knot",
+      "monolith": "Monolith",
+      "spheres": "Spheres"
+    },
+    "actions": {
+      "save": "Save",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "confirmDelete": "Delete this artwork?"
+    }
+  },
+  "intro": {
+    "enter": "Enter the expo",
+    "tour": "Take the guided tour"
+  }
+}

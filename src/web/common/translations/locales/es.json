@@ -1,0 +1,67 @@
+{
+  "nav": {
+    "manageExpo": "Gestionar Expo",
+    "settings": "Ajustes"
+  },
+  "settings": {
+    "title": "Ajustes",
+    "language": "Idioma",
+    "languages": {
+      "en": "Inglés",
+      "fr": "Francés",
+      "ar": "Árabe",
+      "es": "Español"
+    }
+  },
+  "manage": {
+    "title": "Gestionar Expo",
+    "artworks": "Obras",
+    "addArtwork": "Añadir obra",
+    "editArtwork": "Editar obra",
+    "noArtworks": "Sin obras aún",
+    "painting": "Pintura",
+    "sculpture": "Escultura",
+    "fields": {
+      "id": "ID (slug)",
+      "title": "Título",
+      "artist": "Artista",
+      "year": "Año",
+      "medium": "Técnica",
+      "description": "Descripción",
+      "dimensions": "Dimensiones",
+      "price": "Precio / estado",
+      "type": "Tipo",
+      "wall": "Pared",
+      "offset": "Desplazamiento (m)",
+      "width": "Ancho (m)",
+      "height": "Alto (m)",
+      "image": "Ruta imagen",
+      "posX": "Posición X (m)",
+      "posZ": "Posición Z (m)",
+      "shape": "Forma"
+    },
+    "walls": {
+      "north": "Norte",
+      "south": "Sur",
+      "east": "Este",
+      "west": "Oeste",
+      "center-north": "Centro (detrás)",
+      "center-south": "Centro (frente)"
+    },
+    "shapes": {
+      "knot": "Nudo",
+      "monolith": "Monolito",
+      "spheres": "Esferas"
+    },
+    "actions": {
+      "save": "Guardar",
+      "cancel": "Cancelar",
+      "delete": "Eliminar",
+      "confirmDelete": "¿Eliminar esta obra?"
+    }
+  },
+  "intro": {
+    "enter": "Entrar a la expo",
+    "tour": "Visita guiada"
+  }
+}
