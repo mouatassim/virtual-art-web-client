@@ -1,14 +1,17 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { useQuery } from '@tanstack/react-query'
+import { useState } from 'react'
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
 import { ExpoProvider } from './modules/Expo/ExpoContext'
 import { ExpoScene } from './modules/Expo/ExpoScene'
 import { Overlay } from './modules/HUD/Overlay'
+import { Sidebar } from './common/Layout/Sidebar'
 import { Spinner } from '@ui/Spinner/Spinner'
 import { expoRepository } from '@infrastructure/mock/MockExpoRepository'
+import './common/Layout/sidebar.css'
 
 const queryClient = new QueryClient()
 
 function ExpoApp() {
+  const [collapsed, setCollapsed] = useState(true)
   const { data: config, isLoading } = useQuery({
     queryKey: ['expo-config'],
     queryFn: () => expoRepository.getConfig(),
@@ -25,9 +28,12 @@ function ExpoApp() {
 
   return (
     <ExpoProvider config={config}>
-      <div className="app">
-        <ExpoScene />
-        <Overlay />
+      <div className="app-shell" data-collapsed={String(collapsed)}>
+        <Sidebar collapsed={collapsed} onToggleCollapse={() => setCollapsed((c) => !c)} />
+        <div className="scene-area">
+          <ExpoScene />
+          <Overlay />
+        </div>
       </div>
     </ExpoProvider>
   )
