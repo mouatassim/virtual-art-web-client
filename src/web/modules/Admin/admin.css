@@ -1,0 +1,165 @@
+/* ── Admin layout ────────────────────────────────────────────────────── */
+.admin-root { position: fixed; inset: 0; display: flex; flex-direction: column; background: #f4f1ec; font-family: var(--sans); color: var(--ink); }
+
+.admin-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 52px; padding: 0 20px;
+  background: #fbfaf7; border-bottom: 1px solid var(--line);
+  flex-shrink: 0; z-index: 20;
+}
+.admin-topbar-title { font-family: var(--serif); font-size: 18px; font-style: italic; font-weight: 500; }
+.admin-topbar-right { display: flex; align-items: center; gap: 12px; }
+.admin-topbar-user { font-size: 12px; color: var(--ink-2); }
+.admin-logout-btn {
+  padding: 6px 14px; border-radius: 8px; border: 1px solid var(--line);
+  background: transparent; cursor: pointer; font-size: 12px; font-weight: 500; color: var(--ink-2);
+}
+.admin-logout-btn:hover { background: rgba(28,27,25,.06); }
+
+/* ── Main split ──────────────────────────────────────────────────────── */
+.admin-body { display: grid; grid-template-columns: 400px 1fr; flex: 1; overflow: hidden; }
+
+/* ── Left panel ──────────────────────────────────────────────────────── */
+.admin-panel {
+  display: flex; flex-direction: column;
+  background: #fbfaf7; border-right: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.admin-tabs {
+  display: flex; border-bottom: 1px solid var(--line); flex-shrink: 0;
+}
+.admin-tab {
+  flex: 1; padding: 10px 0; border: none; background: transparent;
+  cursor: pointer; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3);
+  border-bottom: 2px solid transparent; transition: color 0.15s, border-color 0.15s;
+}
+.admin-tab:hover { color: var(--ink); }
+.admin-tab.active { color: var(--ink); border-bottom-color: var(--ink); }
+
+.admin-scroll { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+
+/* ── Section headers ────────────────────────────────────────────────── */
+.admin-section-title {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--ink-3); margin: 0 0 10px;
+}
+
+/* ── Expo settings form ─────────────────────────────────────────────── */
+.admin-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.admin-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+.admin-field { display: flex; flex-direction: column; gap: 4px; }
+.admin-label { font-size: 11px; font-weight: 600; color: var(--ink-3); letter-spacing: 0.04em; }
+.admin-input, .admin-select {
+  width: 100%; padding: 7px 10px; border-radius: 7px;
+  border: 1px solid var(--line); background: rgba(255,255,255,.8);
+  font: inherit; font-size: 12px; color: var(--ink); outline: none;
+  transition: border-color 0.15s;
+}
+.admin-input:focus, .admin-select:focus { border-color: var(--accent); }
+.admin-color { padding: 3px 6px; height: 32px; cursor: pointer; }
+.admin-divider { height: 1px; background: var(--line); margin: 4px 0; }
+
+.admin-toggle {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 12px; border-radius: 8px; border: 1px solid var(--line);
+  background: rgba(255,255,255,.6);
+}
+.admin-toggle-label { font-size: 12px; font-weight: 500; color: var(--ink); }
+.admin-toggle-desc { font-size: 11px; color: var(--ink-3); margin-top: 1px; }
+.admin-switch { position: relative; width: 36px; height: 20px; flex-shrink: 0; }
+.admin-switch input { opacity: 0; width: 0; height: 0; }
+.admin-switch-track {
+  position: absolute; inset: 0; border-radius: 10px;
+  background: var(--line); cursor: pointer; transition: background 0.2s;
+}
+.admin-switch input:checked + .admin-switch-track { background: var(--accent); }
+.admin-switch-thumb {
+  position: absolute; left: 2px; top: 2px; width: 16px; height: 16px;
+  border-radius: 50%; background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,.2); transition: transform 0.2s;
+  pointer-events: none;
+}
+.admin-switch input:checked ~ .admin-switch-thumb { transform: translateX(16px); }
+
+.admin-save-btn {
+  width: 100%; padding: 10px; border-radius: 8px; border: none;
+  background: var(--ink); color: #f8f8f6;
+  font-size: 13px; font-weight: 600; cursor: pointer;
+  transition: background 0.15s;
+}
+.admin-save-btn:hover { background: #33302c; }
+.admin-save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.admin-save-success { font-size: 12px; color: var(--accent); text-align: center; }
+
+/* ── Artwork list ───────────────────────────────────────────────────── */
+.admin-artwork-item {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line);
+  background: rgba(255,255,255,.6);
+}
+.admin-artwork-item:hover { background: rgba(255,255,255,.9); }
+.admin-artwork-info { display: flex; align-items: center; gap: 8px; min-width: 0; flex: 1; }
+.admin-artwork-type { font-size: 16px; flex-shrink: 0; }
+.admin-artwork-title { font-size: 12px; font-weight: 600; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.admin-artwork-meta { font-size: 11px; color: var(--ink-3); }
+.admin-artwork-actions { display: flex; gap: 4px; flex-shrink: 0; }
+
+.admin-add-btn {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  width: 100%; padding: 9px; border-radius: 8px;
+  border: 1px dashed var(--line); background: transparent;
+  cursor: pointer; font-size: 12px; font-weight: 500; color: var(--ink-2);
+  transition: background 0.15s;
+}
+.admin-add-btn:hover { background: rgba(28,27,25,.04); border-color: rgba(28,27,25,.3); }
+
+/* ── Bench list ─────────────────────────────────────────────────────── */
+.admin-bench-item {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line);
+  background: rgba(255,255,255,.6); font-size: 12px; color: var(--ink-2);
+}
+
+/* ── Action buttons ─────────────────────────────────────────────────── */
+.admin-icon-btn {
+  display: grid; place-items: center; width: 26px; height: 26px;
+  border-radius: 6px; border: 1px solid transparent;
+  background: transparent; cursor: pointer; color: var(--ink-3);
+  transition: background 0.15s, color 0.15s;
+}
+.admin-icon-btn:hover { background: rgba(28,27,25,.06); color: var(--ink); }
+.admin-icon-btn--delete:hover { background: rgba(180,30,30,.08); color: #b01c1c; }
+.admin-icon-btn--confirm { background: rgba(180,30,30,.12); color: #b01c1c; }
+
+/* ── Preview pane ───────────────────────────────────────────────────── */
+.admin-preview { position: relative; overflow: hidden; background: #e9e6e0; }
+
+/* ── Login page ─────────────────────────────────────────────────────── */
+.admin-login-root {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  background: radial-gradient(ellipse at center, #f4f1ec 0%, #e9e6e0 100%);
+}
+.admin-login-card {
+  width: 360px; padding: 36px 32px;
+  background: #fbfaf7; border: 1px solid var(--line);
+  border-radius: 16px; box-shadow: 0 10px 40px rgba(30,22,12,.1);
+  display: flex; flex-direction: column; gap: 20px;
+}
+.admin-login-title { font-family: var(--serif); font-size: 26px; font-style: italic; font-weight: 400; margin: 0; }
+.admin-login-subtitle { font-size: 13px; color: var(--ink-2); margin: -12px 0 0; }
+.admin-login-form { display: flex; flex-direction: column; gap: 12px; }
+.admin-login-error { font-size: 12px; color: #b01c1c; background: rgba(180,30,30,.08); padding: 8px 12px; border-radius: 7px; }
+
+/* ── Create expo form ───────────────────────────────────────────────── */
+.admin-create-card {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  background: #f4f1ec;
+}
+.admin-create-inner {
+  width: 400px; padding: 36px 32px; background: #fbfaf7;
+  border: 1px solid var(--line); border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(30,22,12,.1);
+  display: flex; flex-direction: column; gap: 16px;
+}
