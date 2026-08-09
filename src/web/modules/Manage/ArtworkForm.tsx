@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react'
+import { useRef, useState, type FormEvent } from 'react'
 import { useTranslate } from '@common/hooks/useTranslate'
 import type { ArtworkConfig, PaintingConfig, SculptureConfig, WallId } from '@core/entities/artwork.entity'
 
@@ -62,6 +62,27 @@ export function ArtworkForm({ initial, onSave, onCancel }: Props) {
   const [width, setWidth] = useState(String(p?.width ?? 1.0))
   const [height, setHeight] = useState(String(p?.height ?? 0.8))
   const [image, setImage] = useState(p?.image ?? '')
+  const [uploading, setUploading] = useState(false)
+  const fileRef = useRef<HTMLInputElement>(null)
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    setUploading(true)
+    try {
+      const form = new FormData()
+      form.append('file', file)
+      const res = await fetch('/api/upload', { method: 'POST', credentials: 'include', body: form })
+      if (!res.ok) throw new Error('Upload failed')
+      const { url } = await res.json() as { url: string }
+      setImage(url)
+    } catch {
+      // keep the existing value on error
+    } finally {
+      setUploading(false)
+      if (fileRef.current) fileRef.current.value = ''
+    }
+  }
 
   // Sculpture fields
   const [posX, setPosX] = useState(String(s?.position?.[0] ?? 0))
@@ -133,7 +154,40 @@ export function ArtworkForm({ initial, onSave, onCancel }: Props) {
             <Field label={t('manage.fields.width')}><Input type="number" step="0.1" min="0.1" value={width} onChange={(e) => setWidth(e.target.value)} /></Field>
             <Field label={t('manage.fields.height')}><Input type="number" step="0.1" min="0.1" value={height} onChange={(e) => setHeight(e.target.value)} /></Field>
           </div>
-          <Field label={t('manage.fields.image')}><Input value={image} onChange={(e) => setImage(e.target.value)} placeholder="art/my-piece.jpg" /></Field>
+          <Field label={t('manage.fields.image')}>
+            <div style={{ display: 'flex', gap: 6 }}>
+              <Input
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+                placeholder="art/my-piece.jpg"
+                style={{ flex: 1 }}
+              />
+              <input
+                ref={fileRef}
+                type="file"
+                accept="image/*"
+                style={{ display: 'none' }}
+                onChange={handleFileChange}
+              />
+              <button
+                type="button"
+                className="btn-cancel"
+                style={{ flex: '0 0 auto', whiteSpace: 'nowrap' }}
+                onClick={() => fileRef.current?.click()}
+                disabled={uploading}
+              >
+                {uploading ? '…' : '📁'}
+              </button>
+            </div>
+            {image && (
+              <img
+                src={image}
+                alt="preview"
+                style={{ marginTop: 6, width: '100%', maxHeight: 80, objectFit: 'contain', borderRadius: 6, background: '#f4f1ec' }}
+                onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
+              />
+            )}
+          </Field>
         </>
       ) : (
         <>
