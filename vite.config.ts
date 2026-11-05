@@ -15,4 +15,18 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
     },
   },
+  server: {
+    host: '0.0.0.0',
+    port: 5173,
+    strictPort: true,
+    watch: { usePolling: true },
+    hmr: { host: process.env.VITE_HMR_HOST || 'localhost' },
+    allowedHosts: true,
+    proxy: {
+      '/api': {
+        target: process.env.API_PROXY_TARGET || 'http://localhost:3010',
+        changeOrigin: true,
+      },
+    },
+  },
 })

@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import { useTranslate } from '@common/hooks/useTranslate'
 import { SettingsPanel } from '@modules/Settings/SettingsPanel'
-import { ManagePanel } from '@modules/Manage/ManagePanel'
 import './sidebar.css'
 
-type ActiveSection = 'manage' | 'settings' | null
+type ActiveSection = 'settings' | null
 
 function IconPalette({ size = 20 }: { size?: number }) {
   return (
@@ -66,14 +65,6 @@ export function Sidebar({ collapsed, onToggleCollapse }: SidebarProps) {
 
       <nav className="sidebar-nav">
         <button
-          className={`sidebar-nav-btn ${active === 'manage' && !collapsed ? 'active' : ''}`}
-          onClick={() => toggle('manage')}
-          title={t('nav.manageExpo')}
-        >
-          <IconPalette size={18} />
-          <span className="sidebar-nav-label">{t('nav.manageExpo')}</span>
-        </button>
-        <button
           className={`sidebar-nav-btn ${active === 'settings' && !collapsed ? 'active' : ''}`}
           onClick={() => toggle('settings')}
           title={t('nav.settings')}
@@ -83,10 +74,9 @@ export function Sidebar({ collapsed, onToggleCollapse }: SidebarProps) {
         </button>
       </nav>
 
-      {!collapsed && active && (
+      {!collapsed && active === 'settings' && (
         <div className="sidebar-panel">
-          {active === 'settings' && <SettingsPanel />}
-          {active === 'manage' && <ManagePanel />}
+          <SettingsPanel />
         </div>
       )}
     </aside>
